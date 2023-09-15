@@ -21,6 +21,12 @@ class Hangman
   end
 
   def play_round(in_letter)
+
+    if @wrong_letters.include?(in_letter) || @guessed_letters.include?(in_letter)
+      puts "You already guessed that letter!"
+      return
+    end
+
     if @word.include?(in_letter)
       @word.split("").each_with_index do |letter, index|
         @guessed_letters[index] = letter if letter == in_letter
